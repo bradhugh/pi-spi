@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    _spi = require("./build/Release/spi_binding");
+    _spi = require('bindings')('spi_binding.node');
 
 exports.mode = {
     CPHA: 0x01,
