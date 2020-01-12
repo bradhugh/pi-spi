@@ -1,6 +1,6 @@
 {
-  "name": "pi-spi",
-  "version": "1.0.3",
+  "name": "@bradhugh/pi-spi",
+  "version": "1.0.4",
   "description": "Simple async SPI library for Raspberry Pi",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/natevw/pi-spi.git"
+    "url": "https://github.com/bradhugh/pi-spi.git"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
   },
   "keywords": [
     "raspi",
