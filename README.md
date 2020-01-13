@@ -12,9 +12,10 @@ Simple asyncronous node.js SPI library for Raspberry Pi (and likely other embedd
 var SPI = require('pi-spi');
 
 var spi = SPI.initialize("/dev/spidev0.0"),
-    test = Buffer("Hello, World!");
+    test = Buffer.from("Hello, World!");
 
 // reads and writes simultaneously
+// e.g. jumper MOSI [BCM 10, physical pin 19] to MISO [BCM 9, physical pin 21]
 spi.transfer(test, test.length, function (e,d) {
     if (e) console.error(e);
     else console.log("Got \""+d.toString()+"\" back.");
@@ -65,10 +66,14 @@ Writes outbuffer, ignoring response bytes.
 
 Note that if there was an error opening the device, the `transfer`/`read`/`write` calls will fail each time called. I may [revise the initialize method](https://github.com/natevw/pi-spi/issues/2#issuecomment-27588982) so to allow you to handle the error better.
 
+### spi.close(cb)
+
+Frees up the underlying device descriptor if you are no longer using this instance. You will need to `SPI.initialize` a new instance if you wish to resume communication later.
+
 
 ## License
 
-Copyright © 2013, Nathan Vander Wilt.
+Copyright © 2013–2019, Nathan Vander Wilt.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
